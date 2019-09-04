@@ -19,13 +19,14 @@ $(document).ready(function () {
         connected = true;
         client.on("connect", function () {
             console.log("successfully connected!")
+            $("#status").val("connected")
         })
         
-        $("#status").val("connected")
-        client.on("message", function (topic, payload) {
-        console.log([topic, payload].join(": "));
+        
+        client.on("message", function (topic, payload) {    
+        console.log([topic, payload].join(": "));        
             $('#tbodyB').append('<tr><td>' + topic + '<td>' + payload + '<td>'+moment().format('MMMM Do YYYY, h:mm:ss a') + '</td></tr>');
-
+            
         })
 
 
